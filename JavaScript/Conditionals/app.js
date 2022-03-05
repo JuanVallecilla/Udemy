@@ -20,14 +20,28 @@
 // }
 
 //Using if else-if and else
-const age = 68;
+// const age = 68;
 
-if (age < 5) {
-  console.log("you are a child so free entry");
-} else if (age < 10) {
-  console.log("you have to pay 10$");
-} else if (age < 65) {
-  console.log("20$ is the feed");
+// if (age < 5) {
+//   console.log("you are a child so free entry");
+// } else if (age < 10) {
+//   console.log("you have to pay 10$");
+// } else if (age < 65) {
+//   console.log("20$ is the feed");
+// } else {
+//   console.log("You a senior, You get a discount! Pay $10");
+// }
+
+// Password must be 6+ characters
+// Password cannot incluse space
+const userInputPassword = prompt("please enter a new password");
+
+if (userInputPassword.length >= 6) {
+  if (userInputPassword.indexOf(" ") === -1) {
+    console.log("Valid Password");
+  } else {
+    console.log("Password must not contain spaces");
+  }
 } else {
-  console.log("You a senior, You get a discount! Pay $10");
+  console.log("Password must be 6+ characters");
 }
