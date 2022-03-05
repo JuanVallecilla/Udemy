@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Forms Demo</h1>
+    <form action="/res">
+      <p>
+        <label for="username">Enter a Username:</label>
+        <input
+          type="text"
+          placeholder="username"
+          id="username"
+          name="username"
+        />
+      </p>
+      <p>
+        <label for="password">Enter a Password:</label>
+        <input type="password" placeholder="password" id="password" />
+      </p>
+      <p>
+        <label for="color">Select a color:</label>
+        <input type="color" placeholder="Color" id="color" />
+      </p>
+      <p>
+        <label for="number">Enter a number:</label>
+        <input type="number" placeholder="Enter a number" id="number" />
+      </p>
+    </form>
+    <hr />
+    <h1>Search Form</h1>
+    <form action="https://www.google.com/search">
+      <input type="text" name="q" />
+      <button>Search Google</button>
+    </form>
+    <h2>More Inputs!</h2>
+    <form action="/birds">
+      <input type="checkbox" name="agree_tos" id="agree" checked />
+      <label for="agree">I agree to terms</label>
+      <p>
+        <label for="xs">XS:</label>
+        <input type="radio" name="size" id="xs" value="xs" />
+        <label for="s">S:</label>
+        <input type="radio" name="size" id="s" value="s" />
+        <label for="m">M:</label>
+        <input type="radio" name="size" id="m" value="m" />
+      </p>
+      <p>
+        <label for="size_select">Select a Shirt Size</label>
+        <select name="shirts" id="size_select--">
+          <option value="">--Select a Size</option>
+          <option value="S">Small</option>
+          <option value="M">Medium</option>
+          <option value="L">Large</option>
+        </select>
+      </p>
+      <button>Submit</button>
+    </form>
+    <hr />
+    <h2>Validation Demo</h2>
+    <form action="/dummy">
+      <label for="first">Enter First Name</label>
+      <input type="text" name="first" id="first" />
+      <p>
+        <label for="username">Username</label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          minlength="5"
+          maxlength="10"
+          required
+        />
+      </p>
+      <button>Submit</button>
+    </form>
+  </body>
+</html>

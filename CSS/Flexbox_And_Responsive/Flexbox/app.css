@@ -1,0 +1,67 @@
+/* Align-Self, Align-items, align Content have to do with the cross-axis */
+/* Justify-content, flex direction,flex-basis have to do with the main Axis*/
+body {
+  font-family: "Open Sans" sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+#container {
+  background-color: #003049;
+  width: 90%;
+  /* height: 500px; */
+  margin: 0 auto;
+  border: 5px solid #003049;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* flex-wrap: wrap; */
+}
+
+#container div {
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  flex-basis: 600px;
+  /* flex-grow: 1; */
+}
+
+/* Using flex-grow Note:Takes a unit of a number */
+/* flex-shrink allows items to shrink to fit if the size of all flex items is larger than the flex container. */
+div:nth-of-type(1) {
+  flex-grow: 1;
+  flex-shrink: 2;
+}
+
+/*  
+div:nth-of-type(2) {
+  align-self: center;
+} */
+
+/* div:nth-of-type(3) {
+  align-self: flex-end;
+} */
+
+/* div:nth-of-type(5) {
+  flex-grow: 2;
+} */
+
+main {
+  width: 80%;
+  height: 500px;
+  margin: 0 auto;
+  border: 5px solid black;
+  display: flex;
+}
+/* Here we are using flex short-hand flex: grow shrink basis */
+main .sidebar {
+  background-color: #6930c3;
+  border: 2px solid white;
+  flex: 1 2 300px;
+}
+main .maincontent {
+  background-color: #80ffdb;
+  flex: 2 1 800px;
+}
