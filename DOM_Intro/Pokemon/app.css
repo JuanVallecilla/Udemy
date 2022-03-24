@@ -1,0 +1,35 @@
+.pokemon {
+  display: inline-block;
+  text-align: center;
+  margin: 10px;
+  border: black 1px solid;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: lemonchiffon;
+  font-family: "Balsamiq Sans";
+}
+.pokemon img {
+  display: block;
+}
+
+h1 {
+  text-align: center;
+  font-size: 80px;
+  margin: 20px;
+  font-family: "Balsamiq Sans";
+  color: brown;
+}
+
+body {
+  background-color: rgb(169, 192, 211);
+}
+
+.pokemon a {
+  text-decoration: none;
+  color: black;
+}
+
+.pokemon a:hover {
+  color: rgba(46, 44, 187, 0.932);
+  text-decoration: underline;
+}
