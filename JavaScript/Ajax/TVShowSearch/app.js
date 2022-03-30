@@ -13,6 +13,7 @@ input.addEventListener("input", async function (e) {
   const config = { params: { q: searchInput } };
   const res = await axios.get(`https://api.tvmaze.com/search/shows`, config);
   displayImg(res.data);
+  console.log(res.data);
 });
 
 const displayImg = (shows) => {
@@ -21,17 +22,18 @@ const displayImg = (shows) => {
       const tvCard = document.createElement("div");
       tvCard.classList.add("tvCard");
       const frontFace = document.createElement("div");
-      frontFace.classList.add("fontFace");
+      frontFace.classList.add("frontFace");
       const backFace = document.createElement("div");
       backFace.classList.add("backFace");
       const showImg = document.createElement("img");
       showImg.src = result.show.image.medium;
-      // const summary = document.createElement("p");
-      // summary.innerHTML = result.show.summary;
+      const summary = document.createElement("p");
+      summary.innerHTML = result.show.summary;
       frontFace.appendChild(showImg);
       container.appendChild(frontFace);
       tvCard.appendChild(frontFace);
       tvCard.appendChild(backFace);
+      backFace.appendChild(summary);
       container.appendChild(tvCard);
     }
   }
