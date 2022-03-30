@@ -1,20 +1,41 @@
-const form = document.querySelector("#searchForm");
-form.addEventListener("submit", async function (e) {
+// const form = document.getElementById("searchForm");
+const container = document.getElementById("container");
+const input = document.querySelector("input");
+
+input.addEventListener("input", async function (e) {
   e.preventDefault();
-  const searchInput = form.elements.query.value;
+  deleteImg();
+  const searchInput = input.value;
   const config = { params: { q: searchInput } };
   const res = await axios.get(`https://api.tvmaze.com/search/shows`, config);
-  //console.log(res.data[0].show.image.medium);
   displayImg(res.data);
-  form.elements.query.value = "";
+  console.log(res.data);
+  //   form.elements.query.value = "";
 });
 
 const displayImg = (shows) => {
   for (let result of shows) {
     if (result.show.image) {
       const img = document.createElement("IMG");
+      const summary = document.createElement("p");
+      // summary.innerText = result.show.summary;
       img.src = result.show.image.medium;
-      document.body.append(img);
+      summary.innerText = result.show.summary;
+      container.appendChild(img);
+      img.appendChild(summary);
+      console.log(summary);
     }
   }
 };
+
+const deleteImg = () => {
+  const imgs = document.querySelectorAll("img");
+  for (const img of imgs) {
+    img.remove();
+  }
+};
+
+// container.addEventListener("mouseover", function (e) {
+//   const image = document.querySelector("img");
+//   image.src = "image.png";
+// });
