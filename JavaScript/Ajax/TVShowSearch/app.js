@@ -5,9 +5,7 @@ const input = document.querySelector("#search__input");
 // const div = document.querySelectorAll("div");
 
 input.addEventListener("input", async function (e) {
-  // if (e.code === "Enter") {
   e.preventDefault();
-  // removeChild();
   removeEmptyDivs();
   deleteImg();
   deleteSummary();
@@ -15,40 +13,26 @@ input.addEventListener("input", async function (e) {
   const config = { params: { q: searchInput } };
   const res = await axios.get(`https://api.tvmaze.com/search/shows`, config);
   displayImg(res.data);
-  console.log(res.data);
-  // }
-  // console.log(res.data);
-  //   form.elements.query.value = "";
 });
-
-// const displayImg = (shows) => {
-//   for (let result of shows) {
-//     if (result.show.image) {
-//       const img = document.createElement("IMG");
-//       const summary = document.createElement("p");
-//       // summary.innerText = result.show.summary;
-//       img.src = result.show.image.medium;
-//       summary.innerText = result.show.summary;
-//       container.appendChild(img);
-//       img.appendChild(summary);
-//       console.log(summary);
-//     }
-//   }
-// };
 
 const displayImg = (shows) => {
   for (let result of shows) {
     if (result.show.image) {
-      const tvShow = document.createElement("div");
-      tvShow.classList.add("tvshowCard");
+      const tvCard = document.createElement("div");
+      tvCard.classList.add("tvCard");
+      const frontFace = document.createElement("div");
+      frontFace.classList.add("fontFace");
+      const backFace = document.createElement("div");
+      backFace.classList.add("backFace");
       const showImg = document.createElement("img");
       showImg.src = result.show.image.medium;
       // const summary = document.createElement("p");
       // summary.innerHTML = result.show.summary;
-      tvShow.appendChild(showImg);
-      // tvShow.appendChild(summary);
-      container.appendChild(tvShow);
-      // form.appendChild(container);
+      frontFace.appendChild(showImg);
+      container.appendChild(frontFace);
+      tvCard.appendChild(frontFace);
+      tvCard.appendChild(backFace);
+      container.appendChild(tvCard);
     }
   }
 };
@@ -76,12 +60,3 @@ const removeChild = () => {
 const removeEmptyDivs = () => {
   container.innerHTML = "";
 };
-// container.addEventListener("mouseover", function (e) {
-//   const image = document.querySelector("img");
-//   image.src = "image.png";
-// });
-
-// div
-//      img
-//      p
-// div
