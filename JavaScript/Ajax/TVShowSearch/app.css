@@ -41,17 +41,17 @@ body {
 
 .backFace {
   position: relative;
+  display: inline-block;
   top: 0;
   left: 0;
   width: 234px;
-  height: 319px;
+  height: 400px;
   backface-visibility: hidden;
   overflow: hidden;
   background: black;
   color: white;
   border-radius: 10px;
   border: #e9dc55 2px solid;
-
   text-align: center;
   transform: rotateY(180deg);
 }
