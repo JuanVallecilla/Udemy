@@ -1,5 +1,4 @@
 body {
-  font-family: "Reenie Beanie", cursive;
   background-color: rgb(31, 32, 41);
 }
 
@@ -11,18 +10,12 @@ body {
   justify-content: flex-start;
   flex-wrap: wrap;
 }
-.backFace p p {
-  position: relative;
-  display: block;
-  top: 0;
-  left: 0;
-  margin: 10px;
-  width: 214px;
-}
+
 .tvCard {
   position: relative;
   top: 0;
   left: 0;
+  width: 234px;
   transform-style: preserve-3d;
   transition: all 0.8s ease;
 }
@@ -37,6 +30,13 @@ body {
   left: 0;
   backface-visibility: hidden;
   overflow: hidden;
+}
+
+.frontFace figcaption {
+  font-family: "Courier New", Courier, monospace;
+  display: flex;
+  justify-content: center;
+  color: white;
 }
 
 .backFace {
@@ -56,12 +56,12 @@ body {
   transform: rotateY(180deg);
 }
 
-.frontFace p,
 .backFace p {
   font-family: "zilla slab", sans-serif;
   font-weight: normal;
   font-size: 12px;
   text-align: center;
+  margin: 10px;
 }
 
 img {
