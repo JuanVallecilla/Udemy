@@ -12,18 +12,22 @@ app.set("views", path.join(__dirname, "/views"));
 
 const comments = [
   {
+    id: 1,
     username: "Todd",
     comment: "Lol you are so funny!",
   },
   {
+    id: 2,
     username: "Mike",
     comment: "I have a dog and a cat",
   },
   {
+    id: 3,
     username: "Jhon",
     comment: "I dont have a dog or a cat but I have a bird!",
   },
   {
+    id: 4,
     username: "Juan",
     comment: "My favorite game is league of legends",
   },
@@ -32,22 +36,37 @@ const comments = [
 // **********************************
 // INDEX - renders multiple comments
 // **********************************
+
 app.get("/comments", (req, res) => {
   res.render("comments/index", { comments });
 });
+
 // **********************************
 // NEW - renders a form
 // **********************************
+
 app.get("/comments/new", (req, res) => {
   res.render("comments/new");
 });
+
 // **********************************
 // CREATE - creates a new comment
 // **********************************
+
 app.post("/comments", (req, res) => {
   const { username, comment } = req.body;
   comments.push({ username, comment });
   res.redirect("/comments");
+});
+
+// *******************************************
+// SHOW - details about one particular comment
+// *******************************************
+
+app.get("/comments/:id", (req, res) => {
+  const { id } = req.params;
+  const comment = comments.find((c) => c.id === parseInt(id));
+  res.render("comments/show", { comment });
 });
 
 app.get("/tacos", (req, res) => {
