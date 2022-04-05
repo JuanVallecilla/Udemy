@@ -35,10 +35,21 @@ const comments = [
 app.get("/comments", (req, res) => {
   res.render("comments/index", { comments });
 });
-
 // **********************************
 // NEW - renders a form
 // **********************************
+app.get("/comments/new", (req, res) => {
+  res.render("comments/new");
+});
+// **********************************
+// CREATE - creates a new comment
+// **********************************
+app.post("/comments", (req, res) => {
+  const { username, comment } = req.body;
+  comments.push({ username, comment });
+  res.redirect("/comments");
+});
+
 app.get("/tacos", (req, res) => {
   res.send("Get /tacos response");
 });
