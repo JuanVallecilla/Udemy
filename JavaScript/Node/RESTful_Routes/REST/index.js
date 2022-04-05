@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const { v4: uuid } = require("uuid"); //For generating ID's
 
 //To parse form data in POST request body:
 app.use(express.urlencoded({ extended: true }));
@@ -12,22 +13,22 @@ app.set("views", path.join(__dirname, "/views"));
 
 const comments = [
   {
-    id: 1,
+    id: uuid(),
     username: "Todd",
     comment: "Lol you are so funny!",
   },
   {
-    id: 2,
+    id: uuid(),
     username: "Mike",
     comment: "I have a dog and a cat",
   },
   {
-    id: 3,
+    id: uuid(),
     username: "Jhon",
     comment: "I dont have a dog or a cat but I have a bird!",
   },
   {
-    id: 4,
+    id: uuid(),
     username: "Juan",
     comment: "My favorite game is league of legends",
   },
@@ -55,7 +56,7 @@ app.get("/comments/new", (req, res) => {
 
 app.post("/comments", (req, res) => {
   const { username, comment } = req.body;
-  comments.push({ username, comment });
+  comments.push({ username, comment, id: uuid() });
   res.redirect("/comments");
 });
 
@@ -65,7 +66,7 @@ app.post("/comments", (req, res) => {
 
 app.get("/comments/:id", (req, res) => {
   const { id } = req.params;
-  const comment = comments.find((c) => c.id === parseInt(id));
+  const comment = comments.find((c) => c.id === id);
   res.render("comments/show", { comment });
 });
 
