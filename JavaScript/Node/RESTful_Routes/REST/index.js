@@ -70,6 +70,25 @@ app.get("/comments/:id", (req, res) => {
   res.render("comments/show", { comment });
 });
 
+// *******************************************
+// EDIT - renders a form to edit a comment
+// *******************************************
+
+// *******************************************
+// UPDATE - updates a particular comment
+// *******************************************
+app.patch("/comments/:id", (req, res) => {
+  const { id } = req.params;
+  const foundComment = comments.find((c) => c.id === id);
+
+  //get new text from req.body
+  const newCommentText = req.body.comment;
+  //update the comment with the data from req.body:
+  foundComment.comment = newCommentText;
+  //redirect back to index (or wherever you want)
+  res.redirect("/comments");
+});
+// *********************************************
 app.get("/tacos", (req, res) => {
   res.send("Get /tacos response");
 });
