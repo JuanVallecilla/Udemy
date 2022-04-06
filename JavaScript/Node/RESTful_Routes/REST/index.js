@@ -14,7 +14,7 @@ app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
 
-const comments = [
+let comments = [
   {
     id: uuid(),
     username: "Todd",
@@ -96,6 +96,16 @@ app.patch("/comments/:id", (req, res) => {
   //update the comment with the data from req.body:
   foundComment.comment = newCommentText;
   //redirect back to index (or wherever you want)
+  res.redirect("/comments");
+});
+// *******************************************
+// DELETE/DESTROY- removes a single comment
+// *******************************************
+
+app.delete("/comments/:id", (req, res) => {
+  const { id } = req.params;
+  // const comments = comments.find((c) => c.id === id);
+  comments = comments.filter((c) => c.id !== id);
   res.redirect("/comments");
 });
 // *********************************************
