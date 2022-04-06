@@ -1,4 +1,5 @@
 const express = require("express");
+const methodOverride = require("method-override");
 const app = express();
 const path = require("path");
 const { v4: uuid } = require("uuid"); //For generating ID's
@@ -7,6 +8,8 @@ const { v4: uuid } = require("uuid"); //For generating ID's
 app.use(express.urlencoded({ extended: true }));
 // for parsing application/json
 app.use(express.json());
+// To 'fake' put/patch/delete requests:
+app.use(methodOverride("_method"));
 // Views folder and EJS setup:
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
@@ -74,9 +77,16 @@ app.get("/comments/:id", (req, res) => {
 // EDIT - renders a form to edit a comment
 // *******************************************
 
+app.get("/comments/:id/edit", (req, res) => {
+  const { id } = req.params;
+  const comment = comments.find((c) => c.id === id);
+  res.render("comments/edit", { comment });
+});
+
 // *******************************************
 // UPDATE - updates a particular comment
 // *******************************************
+
 app.patch("/comments/:id", (req, res) => {
   const { id } = req.params;
   const foundComment = comments.find((c) => c.id === id);
