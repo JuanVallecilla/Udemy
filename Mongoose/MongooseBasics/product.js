@@ -48,9 +48,19 @@ const productSchema = new mongoose.Schema({
 const Product = mongoose.model("Product", productSchema);
 
 // const bike = new Product({ name: "Mountain Bike", price: 599 });
-const bike = new Product({ name: "Bike Helmet Male", price: 29.5, catagories: ["Cycling", "Safety"] });
-bike
-  .save()
+// const bike = new Product({ name: "Tire Pump", price: 18.0, catagories: ["Cycling", "Safety"] });
+// bike
+//   .save()
+//   .then((data) => {
+//     console.log("WORKED");
+//     console.log(data);
+//   })
+//   .catch((err) => {
+//     console.log("Oh no Error", err);
+//   });
+
+// Need to tell mongoose runValidators: true, else we will input negative price number
+Product.findOneAndUpdate({ name: "Tire Pump" }, { price: -10.99 }, { new: true, runValidators: true })
   .then((data) => {
     console.log("WORKED");
     console.log(data);
