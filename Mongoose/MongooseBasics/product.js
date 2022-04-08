@@ -18,9 +18,10 @@ const productSchema = new mongoose.Schema({
     maxlength: 20,
   },
   // Setting a min price since we dont want price to be negative
+  // Passed an error will first value is the min value and the second value as a string is the error message
   price: {
     type: Number,
-    min: 0,
+    min: [0, "Price must be positive"],
   },
   // Setting default values
   onSale: {
@@ -43,24 +44,19 @@ const productSchema = new mongoose.Schema({
       default: 0,
     },
   },
+  // enum Creates a validator that checks if the value is in the given array.
+  size: {
+    type: String,
+    enum: ["S", "M", "L"],
+  },
 });
 
 const Product = mongoose.model("Product", productSchema);
 
 // const bike = new Product({ name: "Mountain Bike", price: 599 });
-// const bike = new Product({ name: "Tire Pump", price: 18.0, catagories: ["Cycling", "Safety"] });
-// bike
-//   .save()
-//   .then((data) => {
-//     console.log("WORKED");
-//     console.log(data);
-//   })
-//   .catch((err) => {
-//     console.log("Oh no Error", err);
-//   });
-
-// Need to tell mongoose runValidators: true, else we will input negative price number
-Product.findOneAndUpdate({ name: "Tire Pump" }, { price: -10.99 }, { new: true, runValidators: true })
+const bike = new Product({ name: "Cycling Jersey", price: 28.99, catagories: ["Cycling", "Safety"], size: "XS" });
+bike
+  .save()
   .then((data) => {
     console.log("WORKED");
     console.log(data);
@@ -68,3 +64,13 @@ Product.findOneAndUpdate({ name: "Tire Pump" }, { price: -10.99 }, { new: true, 
   .catch((err) => {
     console.log("Oh no Error", err);
   });
+
+// Need to tell mongoose runValidators: true, else we will input negative price number
+// Product.findOneAndUpdate({ name: "Tire Pump" }, { price: -10.99 }, { new: true, runValidators: true })
+//   .then((data) => {
+//     console.log("WORKED");
+//     console.log(data);
+//   })
+//   .catch((err) => {
+//     console.log("Oh no Error", err);
+//   });
