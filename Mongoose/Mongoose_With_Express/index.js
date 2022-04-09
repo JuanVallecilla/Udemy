@@ -24,6 +24,14 @@ app.get("/products", async (req, res) => {
   res.render("products/index", { products });
 });
 
+app.get("/products/:id", async (req, res) => {
+  const { id } = req.params;
+  const product = await Product.findById(id);
+  //   console.log(product);
+  //   console.log("details page");
+  res.render("products/show", { product });
+});
+
 app.listen(8080, () => {
   console.log("Connected");
 });
