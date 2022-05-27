@@ -1,9 +1,16 @@
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
 .pokemon {
   display: inline-block;
   text-align: center;
   margin: 10px;
   border: black 1px solid;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 10px;
   background-color: lemonchiffon;
   font-family: "Balsamiq Sans";
